@@ -1,0 +1,6 @@
+select u.username, u.emailaddress
+from i_users u
+JOIN i_user_login_logs l on u.userid = l.userid and u.username != 'Administrator'
+group by u.username,u.emailaddress
+having COUNT(l.userid) >0
+limit 1;
